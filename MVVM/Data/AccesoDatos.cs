@@ -18,7 +18,7 @@ namespace Conectar.MVVM.Data
         public AccesoDatos()
         {
             connectionString =
-                "datasource=localhost;port=3306;username=root;password=1234;database=sakila;";
+                "datasource=localhost;port=3309;username=root;password=1234;database=filmbrosdb;";
         }
 
         public AccesoDatos(string servidor, string puerto, string usuario, string password, string bbdd)

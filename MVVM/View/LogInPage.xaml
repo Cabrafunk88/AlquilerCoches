@@ -29,9 +29,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel 
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+        <StackPanel>
             <Image Grid.Row="0"
                Source="pack://application:,,,/Imagenes/LogoProyecto.png"
                Width="300" 
@@ -39,9 +37,17 @@
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"
             />
-            <Button HorizontalAlignment="Right"/>
+            <Button Width="20"
+                Height="20"
+                Grid.Row="0"
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Top"
+                Margin="0,20,20,0"
+                Padding="8,4"
+                Cursor="Hand"
+                Style="{StaticResource BotonBypass}" Click="Boton_Bypass"
+                />
         </StackPanel>
-
 
         <StackPanel Grid.Row ="1">
             <TextBlock Text="{Binding Mensaje}"
@@ -69,6 +75,7 @@
             <TextBox
                 Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 Style="{StaticResource InputModerno}"
+                FontFamily="Password"
                 Width="200"
                 Height="30"
                 >
@@ -93,13 +100,8 @@
                 Style="{StaticResource BotonModerno}"
                 Width="150"
                 Height="30"
-                Margin="10,0,0,0"
+                Margin="10,0,0,0" Click="Boton_Registro"
                 />
         </StackPanel>
-
-        <Frame
-            x:Name="MainFrame"
-            NavigationUIVisibility="Hidden"
-            />
     </Grid>
 </Page>

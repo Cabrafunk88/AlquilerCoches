@@ -24,5 +24,19 @@ namespace Conectar.MVVM.View
         {
             InitializeComponent();
         }
+
+        private void Boton_Bypass(object sender, RoutedEventArgs e)
+        {
+            Principal principal = new Principal();
+
+            this.NavigationService.Navigate(principal);
+        }
+
+        private void Boton_Registro(object sender, RoutedEventArgs e)
+        {
+            RegistroPage RegistroPage = new RegistroPage();
+
+            this.NavigationService.Navigate(RegistroPage);
+        }
     }
 }
