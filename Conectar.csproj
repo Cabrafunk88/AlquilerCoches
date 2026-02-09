@@ -9,8 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\musica_fondo.mp3" />
     <None Remove="Imagenes\Background.png" />
     <None Remove="Imagenes\LogoProyecto.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\musica_fondo.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +31,10 @@
     <Resource Include="Imagenes\LogoProyecto.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Imagenes\Portadas\" />
   </ItemGroup>
 
 </Project>

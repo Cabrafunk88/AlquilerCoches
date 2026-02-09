@@ -38,5 +38,18 @@ namespace Conectar.MVVM.View
 
             this.NavigationService.Navigate(RegistroPage);
         }
+
+        private void Boton_Ajustes(object sender, RoutedEventArgs e)
+        {
+            AjustesPage ajustesPage = new AjustesPage();
+
+            this.NavigationService.Navigate(ajustesPage);
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

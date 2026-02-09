@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Conectar.Helpers;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,6 +21,8 @@ namespace Conectar
         {
             InitializeComponent();
             MainFrame.Navigate(new MVVM.View.LogInPage());
+            // Asegúrate de que el nombre coincida exactamente (mayúsculas/minúsculas)
+            AudioManager.StartMusic("musica_fondo.mp3");
         }
 
 
