@@ -27,7 +27,7 @@ namespace Conectar.MVVM.View
 
         private void Boton_Bypass(object sender, RoutedEventArgs e)
         {
-            Principal principal = new Principal();
+            Principal principal = new Principal("Modo Bypass");
 
             this.NavigationService.Navigate(principal);
         }

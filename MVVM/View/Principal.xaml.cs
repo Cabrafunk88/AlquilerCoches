@@ -20,9 +20,36 @@ namespace Conectar.MVVM.View
     /// </summary>
     public partial class Principal : Page
     {
-        public Principal()
+        public Principal(string nombreUsuario)
         {
             InitializeComponent();
+
+            // Obtenemos el ViewModel de esta página y le asignamos el nombre recibido
+            var viewModel = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
+            viewModel.Username = nombreUsuario;
+        }
+        public Principal() : this("Invitado") { }
+
+        private void BotonUsuario(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                btn.ContextMenu.Width = btn.ActualWidth; // Hacemos que el menú tenga el mismo ancho que el botón
+
+                btn.ContextMenu.PlacementTarget = btn;
+
+                // Colocamos el menú justo debajo del botón
+                btn.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+
+                btn.ContextMenu.IsOpen = true;
+            }
         }
     }
 }
+
+
+
+
+
+

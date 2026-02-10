@@ -136,12 +136,21 @@ namespace Conectar.MVVM.ViewModel
                     };
                     Mensaje = $"Sesion iniciada con exito, { UsuarioLogeado.Username}";
 
+                    // Navegacion a la pagina principal, pasando el nombre de usuario
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        var principalPage = new Conectar.MVVM.View.Principal(UsuarioLogeado.Username);
+                        ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(principalPage);
+                    });
+
+                    /*
                     // --- LÓGICA DE NAVEGACIÓN ---
                     var mainWindow = Application.Current.MainWindow as MainWindow;
                     if (mainWindow != null)
                     {
                         mainWindow.MainFrame.Navigate(new Conectar.MVVM.View.Principal());
                     }
+                    */
                 }
                 else
                 {

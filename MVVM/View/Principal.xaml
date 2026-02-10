@@ -4,11 +4,65 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Conectar.MVVM.View"
+      xmlns:logInVM="clr-namespace:Conectar.MVVM.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Principal">
 
+    <Page.DataContext>
+        <logInVM:LoginViewModel/>
+    </Page.DataContext>
+
+    <Page.Background>
+        <ImageBrush 
+                ImageSource="pack://application:,,,/Imagenes/Background.png"
+                Stretch="UniformToFill" 
+                TileMode="None" />
+    </Page.Background>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+
+              Background="Black">
+            <StackPanel Orientation="Horizontal"
+                        >
+                <Image Grid.Row="0"
+                   Source="pack://application:,,,/Imagenes/LogoProyecto.png"
+                   Width="150" 
+                   Height="50" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center"
+                />
+                <TextBox x:Name="BarraBusqueda"
+                    Width="200"
+                    Height="25"
+                         VerticalContentAlignment="Center"
+                         Padding="10,0"
+                         Margin="20,0,0,0"
+                         Tag="Buscar..."
+                         Style="{StaticResource BarraBusqueda}"
+                    />
+                <Button Content="{Binding Username}" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0" Click="BotonUsuario">
+                    <Button.ContextMenu>
+                        <ContextMenu x:Name="UserMenu">
+                            <MenuItem Header="Perfil"/>
+                            <MenuItem Header="Reviews"/>
+                            <MenuItem Header="Ajustes"/>
+                            <MenuItem Header="Cerrar Sesion"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+
+                <Button Content="PELÍCULAS" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0"/>
+                <Button Content="AJUSTES" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0"/>
+            </StackPanel>
+        </Grid>
+
+        <Frame x:Name="InteriorFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>
