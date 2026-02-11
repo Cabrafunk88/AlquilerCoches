@@ -8,6 +8,10 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PerfilPage">
 
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Page.Resources>
+
     <Page.Background>
         <ImageBrush 
                 ImageSource="pack://application:,,,/Imagenes/Background.png"
@@ -46,13 +50,52 @@
                                FontWeight="Bold" Margin="0,0,0,20"/>
 
                     <TextBlock Text="Biografía" Foreground="#9ab" FontSize="12"/>
-                    <TextBlock Text="{Binding Bio, TargetNullValue='Sin biografía.'}" 
-                               Foreground="White" FontSize="16" TextWrapping="Wrap" Margin="0,5,0,20"/>
+                    <Grid Margin="0,5,0,20">
+                        <TextBlock Text="{Binding Bio, TargetNullValue='Sin biografía.'}" 
+                               Foreground="White" FontSize="16" TextWrapping="Wrap" Margin="0,5,0,20">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding EstaEditando}" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                 </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBox Text="{Binding Bio, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                 Visibility="{Binding EstaEditando, Converter={StaticResource BoolToVis}}"
+                                 Foreground="White" 
+                                 Background="#222"
+                                 BorderBrush="White"
+                                 FontSize="16" 
+                                 TextWrapping="Wrap" 
+                                 AcceptsReturn="True"
+                                 MinHeight="60"
+                            />
+                    </Grid>
 
                     <UniformGrid Columns="2">
                         <StackPanel Margin="0,0,0,15">
                             <TextBlock Text="Email" Foreground="#9ab" FontSize="12"/>
-                            <TextBlock Text="{Binding Email}" Foreground="White" FontSize="14"/>
+                            <Grid>
+                                <TextBlock Text="{Binding Email}" Foreground="White" FontSize="14">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding EstaEditando}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" 
+                                         Visibility="{Binding EstaEditando, Converter={StaticResource BoolToVis}}"
+                                         Background="#222" Foreground="White"/>
+                            </Grid>
                         </StackPanel>
                         <StackPanel Margin="0,0,0,15">
                             <TextBlock Text="ID" Foreground="#9ab" FontSize="12"/>
@@ -65,8 +108,36 @@
                         </StackPanel>
                     </UniformGrid>
 
-                    <Button Content="EDITAR PERFIL" Style="{StaticResource BotonModerno}" 
-                            HorizontalAlignment="Left" Width="140" Margin="0,30,0,0"/>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,30,0,0">
+                        <Button Content="EDITAR PERFIL"
+                                Command="{Binding EditarPerfilCommand}"
+                                Width="140">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource BotonModerno}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding EstaEditando}" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="10,0,0,0"
+                                    Visibility="{Binding EstaEditando, Converter={StaticResource BoolToVis}}">
+                            <Button Content="ACEPTAR"
+                                    Command="{Binding AceptarCambiosCommand}"
+                                    Style="{StaticResource BotonModerno}"
+                                    Width="100" Margin="0,0,10,0"/>
+
+                            <Button Content="CANCELAR"
+                                    Command="{Binding CancelarEdicionCommand}"
+                                    Style="{StaticResource BotonModerno}"
+                                    Width="100" Margin="0,0,10,0"/>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Border>

@@ -33,7 +33,7 @@ namespace Conectar.MVVM.View
                 Email = "admin@bypass.com",
                 Bio = "Has entrado usando el modo de depuración (Bypass).",
                 Id = 0,
-                FotoPerfil = "pack://application:,,,/Imagenes/default_user.png", // O la ruta de tu imagen por defecto
+                FotoPerfil = "pack://application:,,,/Imagenes/ModoBypass.png", // O la ruta de tu imagen por defecto
                 FechaRegistro = DateTime.Now
             };
 
