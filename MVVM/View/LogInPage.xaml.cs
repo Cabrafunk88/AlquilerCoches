@@ -27,7 +27,17 @@ namespace Conectar.MVVM.View
 
         private void Boton_Bypass(object sender, RoutedEventArgs e)
         {
-            Principal principal = new Principal("Modo Bypass");
+            var usuarioBypass = new Conectar.MVVM.Model.UsuarioModel
+            {
+                Username = "Modo Bypass",
+                Email = "admin@bypass.com",
+                Bio = "Has entrado usando el modo de depuración (Bypass).",
+                Id = 0,
+                FotoPerfil = "pack://application:,,,/Imagenes/default_user.png", // O la ruta de tu imagen por defecto
+                FechaRegistro = DateTime.Now
+            };
+
+            Principal principal = new Principal(usuarioBypass);
 
             this.NavigationService.Navigate(principal);
         }

@@ -133,13 +133,17 @@ namespace Conectar.MVVM.ViewModel
                     {
                         Id = (int)fila["UsuarioID"],
                         Username = fila["NombreUsuario"].ToString(),
+                        Email = fila["Email"].ToString(),
+                        Bio = fila["Bio"] != DBNull.Value ? fila["Bio"].ToString() : "Sin biografía.",
+                        FotoPerfil = fila["FotoPerfilURL"].ToString(),
+                        FechaRegistro = (DateTime)fila["FechaRegistro"]
                     };
                     Mensaje = $"Sesion iniciada con exito, { UsuarioLogeado.Username}";
 
                     // Navegacion a la pagina principal, pasando el nombre de usuario
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        var principalPage = new Conectar.MVVM.View.Principal(UsuarioLogeado.Username);
+                        var principalPage = new Conectar.MVVM.View.Principal(UsuarioLogeado);
                         ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(principalPage);
                     });
 

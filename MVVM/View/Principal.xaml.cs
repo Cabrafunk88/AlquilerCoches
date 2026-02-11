@@ -20,15 +20,16 @@ namespace Conectar.MVVM.View
     /// </summary>
     public partial class Principal : Page
     {
-        public Principal(string nombreUsuario)
+        public Principal(Conectar.MVVM.Model.UsuarioModel usuario)
         {
             InitializeComponent();
 
             // Obtenemos el ViewModel de esta página y le asignamos el nombre recibido
             var viewModel = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
-            viewModel.Username = nombreUsuario;
+
+            viewModel.UsuarioLogeado = usuario; // Asignamos el usuario logueado al ViewModel
+            viewModel.Username = usuario.Username;
         }
-        public Principal() : this("Invitado") { }
 
         private void BotonUsuario(object sender, RoutedEventArgs e)
         {
@@ -54,9 +55,14 @@ namespace Conectar.MVVM.View
 
         private void IrAPerfil(object sender, RoutedEventArgs e)
         {
-            // Navegamos a la página de perfil
-            //Coges el nombre de usuario del ViewModel para pasarlo a la página de perfil
-            this.NavigationService.Navigate(new PerfilPage(new Conectar.MVVM.Model.UsuarioModel { Username = ((Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext).Username }));
+            //ViewModel de esta página
+            var vm = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
+            //
+            if (vm.UsuarioLogeado != null)
+            {
+                // Navegamos a la página de perfil, pasando el usuario logueado
+                this.NavigationService.Navigate(new PerfilPage(vm.UsuarioLogeado));
+            }
         }
 
         private void IrAReviews(object sender, RoutedEventArgs e)
