@@ -45,6 +45,29 @@ namespace Conectar.MVVM.View
                 btn.ContextMenu.IsOpen = true;
             }
         }
+
+        private void IrAAjustes(object sender, RoutedEventArgs e)
+        {
+            // Navegamos a la página de ajustes
+            this.NavigationService.Navigate(new AjustesPage());
+        }
+
+        private void IrAPerfil(object sender, RoutedEventArgs e)
+        {
+            // Navegamos a la página de perfil
+            //Coges el nombre de usuario del ViewModel para pasarlo a la página de perfil
+            this.NavigationService.Navigate(new PerfilPage(new Conectar.MVVM.Model.UsuarioModel { Username = ((Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext).Username }));
+        }
+
+        private void IrAReviews(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ReviewsPage());
+        }
+        private void CerrarSesion(object sender, RoutedEventArgs e)
+        {
+            // Navegamos de vuelta a la página de login
+            this.NavigationService.Navigate(new LogInPage());
+        }
     }
 }
 

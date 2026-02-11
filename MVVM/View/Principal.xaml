@@ -50,10 +50,10 @@
                 <Button Content="{Binding Username}" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0" Click="BotonUsuario">
                     <Button.ContextMenu>
                         <ContextMenu x:Name="UserMenu">
-                            <MenuItem Header="Perfil"/>
-                            <MenuItem Header="Reviews"/>
-                            <MenuItem Header="Ajustes"/>
-                            <MenuItem Header="Cerrar Sesion"/>
+                            <MenuItem Header="Perfil" Click="IrAPerfil"/>
+                            <MenuItem Header="Reviews" Click="IrAReviews"/>
+                            <MenuItem Header="Ajustes" Click="IrAAjustes"/>
+                            <MenuItem Header="Cerrar Sesion" Click="CerrarSesion"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>
