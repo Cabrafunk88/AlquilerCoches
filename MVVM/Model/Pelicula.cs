@@ -10,10 +10,20 @@ namespace Conectar.MVVM.Model
     {
         public int PeliculaID { get; set; }
         public string Titulo { get; set; }
-        public int Anio { get; set; }
-        public string Director { get; set; }
-        public string Genero { get; set; }
-        public string Sinopsis { get; set; }
-        public string PortadaURL { get; set; }
+        public string PortadaURL { get; set; } // Lo que viene de la BD: "/Portadas/Peli.jpg"
+
+        // Esta propiedad es la que usaremos en el Binding del XAML
+        public string ImagenFuente
+        {
+            get
+            {
+                // Si PortadaURL es "/Portadas/TheGodfather.jpg"
+                // La ruta final será "pack://application:,,,/Assets/Portadas/TheGodfather.jpg"
+
+                // Limpiamos la ruta por si acaso trae barras extra
+                string rutaLimpia = PortadaURL.TrimStart('/');
+                return $"pack://application:,,,/Assets/{rutaLimpia}";
+            }
+        }
     }
 }

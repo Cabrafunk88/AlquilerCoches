@@ -10,6 +10,56 @@
 
   <ItemGroup>
     <None Remove="Assets\musica_fondo.mp3" />
+    <None Remove="Assets\Portadas\12AngryMen.jpg" />
+    <None Remove="Assets\Portadas\Alien.jpg" />
+    <None Remove="Assets\Portadas\AmericanHistoryX.jpg" />
+    <None Remove="Assets\Portadas\ApocalypseNow.jpg" />
+    <None Remove="Assets\Portadas\Arrival.jpg" />
+    <None Remove="Assets\Portadas\BackToTheFuture.jpg" />
+    <None Remove="Assets\Portadas\BladeRunner2049.jpg" />
+    <None Remove="Assets\Portadas\Coco.jpg" />
+    <None Remove="Assets\Portadas\DjangoUnchained.jpg" />
+    <None Remove="Assets\Portadas\DunePartTwo.jpg" />
+    <None Remove="Assets\Portadas\FightClub.jpg" />
+    <None Remove="Assets\Portadas\Gladiator.jpg" />
+    <None Remove="Assets\Portadas\Goodfellas.jpg" />
+    <None Remove="Assets\Portadas\GrandBudapestHotel.jpg" />
+    <None Remove="Assets\Portadas\Heat.jpg" />
+    <None Remove="Assets\Portadas\Inception.jpg" />
+    <None Remove="Assets\Portadas\Interstellar.jpg" />
+    <None Remove="Assets\Portadas\Joker.jpg" />
+    <None Remove="Assets\Portadas\JurassicPark.jpg" />
+    <None Remove="Assets\Portadas\Lalaland.jpg" />
+    <None Remove="Assets\Portadas\LeonTheProfessional.jpg" />
+    <None Remove="Assets\Portadas\LifeIsBeautiful.jpg" />
+    <None Remove="Assets\Portadas\MadMaxFuryRoad.jpg" />
+    <None Remove="Assets\Portadas\OnceUponATimeInHollywood.jpg" />
+    <None Remove="Assets\Portadas\Parasite .jpg" />
+    <None Remove="Assets\Portadas\Psycho.jpg" />
+    <None Remove="Assets\Portadas\PulpFiction.jpg" />
+    <None Remove="Assets\Portadas\RearWindow.jpg" />
+    <None Remove="Assets\Portadas\SavingPrivateRyan.jpg" />
+    <None Remove="Assets\Portadas\SchindlersList.jpg" />
+    <None Remove="Assets\Portadas\Seven.jpg" />
+    <None Remove="Assets\Portadas\SevenSamurai.jpg" />
+    <None Remove="Assets\Portadas\SpiderVerse.jpg" />
+    <None Remove="Assets\Portadas\SpiritedAway.jpg" />
+    <None Remove="Assets\Portadas\StarWarsANewHope.jpg" />
+    <None Remove="Assets\Portadas\TheDarkKnight.jpg" />
+    <None Remove="Assets\Portadas\TheDeparted.jpg" />
+    <None Remove="Assets\Portadas\TheGodfather.jpg" />
+    <None Remove="Assets\Portadas\TheGreenMile.jpg" />
+    <None Remove="Assets\Portadas\TheMatrix.jpg" />
+    <None Remove="Assets\Portadas\ThePrestige.jpg" />
+    <None Remove="Assets\Portadas\TheShawshankRedemption .jpg" />
+    <None Remove="Assets\Portadas\TheShining.jpg" />
+    <None Remove="Assets\Portadas\TheSilenceOfTheLambs.jpg" />
+    <None Remove="Assets\Portadas\TheTrumanShow.jpg" />
+    <None Remove="Assets\Portadas\TheUsualSuspects.jpg" />
+    <None Remove="Assets\Portadas\TheWolfOfWallStreet.jpg" />
+    <None Remove="Assets\Portadas\WallE.jpg" />
+    <None Remove="Assets\Portadas\Whiplash.jpg" />
+    <None Remove="Assets\Portadas\YourName.jpg" />
     <None Remove="Imagenes\Background.png" />
     <None Remove="Imagenes\LogoProyecto.png" />
     <None Remove="Imagenes\ModoBypass.png" />
@@ -26,6 +76,156 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Portadas\12AngryMen.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Alien.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\AmericanHistoryX.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\ApocalypseNow.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Arrival.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\BackToTheFuture.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\BladeRunner2049.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Coco.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\DjangoUnchained.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\DunePartTwo.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\FightClub.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Gladiator.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Goodfellas.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\GrandBudapestHotel.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Heat.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Inception.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Interstellar.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Joker.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\JurassicPark.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Lalaland.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\LeonTheProfessional.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\LifeIsBeautiful.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\MadMaxFuryRoad.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\OnceUponATimeInHollywood.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Parasite .jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Psycho.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\PulpFiction.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\RearWindow.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\SavingPrivateRyan.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\SchindlersList.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Seven.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\SevenSamurai.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\SpiderVerse.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\SpiritedAway.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\StarWarsANewHope.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheDarkKnight.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheDeparted.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheGodfather.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheGreenMile.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheMatrix.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\ThePrestige.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheShawshankRedemption .jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheShining.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheSilenceOfTheLambs.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheTrumanShow.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheUsualSuspects.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\TheWolfOfWallStreet.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\WallE.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\Whiplash.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Portadas\YourName.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Imagenes\Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

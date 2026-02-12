@@ -20,6 +20,7 @@ namespace Conectar
         public MainWindow()
         {
             InitializeComponent();
+
             MainFrame.Navigate(new MVVM.View.LogInPage());
             // Asegúrate de que el nombre coincida exactamente (mayúsculas/minúsculas)
             AudioManager.StartMusic("musica_fondo.mp3");

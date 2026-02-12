@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data; // Necesario para DataTable y DataRow
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Conectar.MVVM.Data;   // Tu clase AccesoDatos
+using Conectar.MVVM.Model;  // Tu clase Pelicula
+using MySql.Data.MySqlClient;
 
 namespace Conectar.MVVM.View
 {
@@ -24,43 +19,82 @@ namespace Conectar.MVVM.View
         {
             InitializeComponent();
 
-            // Obtenemos el ViewModel de esta página y le asignamos el nombre recibido
+            // Configuración del ViewModel
             var viewModel = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
-
-            viewModel.UsuarioLogeado = usuario; // Asignamos el usuario logueado al ViewModel
+            viewModel.UsuarioLogeado = usuario;
             viewModel.Username = usuario.Username;
+
+            // CARGAR PELÍCULAS AL INICIAR
+            CargarPeliculasAleatorias();
         }
+
+        private async void CargarPeliculasAleatorias()
+        {
+            try
+            {
+                AccesoDatos db = new AccesoDatos();
+
+                // Llamamos al procedimiento almacenado que debe existir en MySQL
+                DataTable dt = await db.EjecutarProcedimientoAsync("ObtenerPeliculasAleatorias");
+
+                List<Pelicula> listaPelis = new List<Pelicula>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    string rutaBD = row["PortadaURL"].ToString(); // Trae "/Portadas/nombre.jpg"
+                    listaPelis.Add(new Pelicula
+                    {
+                        Titulo = row["Titulo"].ToString(),
+                        PeliculaID = Convert.ToInt32(row["PeliculaID"]),
+                        PortadaURL = $"/Assets{rutaBD}" // Esto genera "/Assets/Portadas/nombre.jpg"
+                    });
+                }
+
+                // Asignamos los datos al ItemsControl del XAML
+                ListaPeliculasAleatorias.ItemsSource = listaPelis;
+            }
+            catch (Exception ex)
+            {
+                // Si da error en da.Fill, asegúrate de haber creado el PROCEDURE en MySQL
+                MessageBox.Show("Error al cargar las películas: " + ex.Message);
+            }
+        }
+
+        // Evento para cuando hagas clic en una película
+        private void Pelicula_Click(object sender, RoutedEventArgs e)
+        {
+            var boton = sender as Button;
+            if (boton?.Tag != null)
+            {
+                int peliculaId = (int)boton.Tag;
+                // Aquí podrías navegar a una página de detalle:
+                // this.NavigationService.Navigate(new DetallePeliculaPage(peliculaId));
+            }
+        }
+
+        #region EVENTOS DE NAVEGACIÓN ORIGINALES
 
         private void BotonUsuario(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
             if (btn != null)
             {
-                btn.ContextMenu.Width = btn.ActualWidth; // Hacemos que el menú tenga el mismo ancho que el botón
-
+                btn.ContextMenu.Width = btn.ActualWidth;
                 btn.ContextMenu.PlacementTarget = btn;
-
-                // Colocamos el menú justo debajo del botón
                 btn.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-
                 btn.ContextMenu.IsOpen = true;
             }
         }
 
         private void IrAAjustes(object sender, RoutedEventArgs e)
         {
-            // Navegamos a la página de ajustes
             this.NavigationService.Navigate(new AjustesPage());
         }
 
         private void IrAPerfil(object sender, RoutedEventArgs e)
         {
-            //ViewModel de esta página
             var vm = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
-            //
             if (vm.UsuarioLogeado != null)
             {
-                // Navegamos a la página de perfil, pasando el usuario logueado
                 this.NavigationService.Navigate(new PerfilPage(vm.UsuarioLogeado));
             }
         }
@@ -68,23 +102,17 @@ namespace Conectar.MVVM.View
         private void IrAReviews(object sender, RoutedEventArgs e)
         {
             var vm = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
-
             if (vm.UsuarioLogeado != null)
             {
-                // Pasamos el ID del usuario a la nueva página
                 this.NavigationService.Navigate(new ReviewsPage(vm.UsuarioLogeado.Id));
             }
         }
+
         private void CerrarSesion(object sender, RoutedEventArgs e)
         {
-            // Navegamos de vuelta a la página de login
             this.NavigationService.Navigate(new LogInPage());
         }
+
+        #endregion
     }
 }
-
-
-
-
-
-

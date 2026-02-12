@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Conectar.MVVM.View"
       xmlns:logInVM="clr-namespace:Conectar.MVVM.ViewModel"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="900"
       Title="Principal">
 
     <Page.DataContext>
@@ -14,55 +14,93 @@
     </Page.DataContext>
 
     <Page.Background>
-        <ImageBrush 
-                ImageSource="pack://application:,,,/Imagenes/Background.png"
-                Stretch="UniformToFill" 
-                TileMode="None" />
+        <ImageBrush ImageSource="pack://application:,,,/Imagenes/Background.png"
+                    Stretch="UniformToFill" />
     </Page.Background>
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
+        <Grid Grid.Row="0" Background="Black">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
+                <Image Source="pack://application:,,,/Imagenes/LogoProyecto.png"
+                       Width="120" Height="40" Margin="10,0"/>
 
-              Background="Black">
-            <StackPanel Orientation="Horizontal"
-                        >
-                <Image Grid.Row="0"
-                   Source="pack://application:,,,/Imagenes/LogoProyecto.png"
-                   Width="150" 
-                   Height="50" 
-                   HorizontalAlignment="Left" 
-                   VerticalAlignment="Center"
-                />
-                <TextBox x:Name="BarraBusqueda"
-                    Width="200"
-                    Height="25"
-                         VerticalContentAlignment="Center"
-                         Padding="10,0"
-                         Margin="20,0,0,0"
-                         Tag="Buscar..."
-                         Style="{StaticResource BarraBusqueda}"
-                    />
-                <Button Content="{Binding Username}" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0" Click="BotonUsuario" MinWidth="80">
+                <TextBox x:Name="BarraBusqueda" Width="200" Height="25"
+                         VerticalContentAlignment="Center" Padding="10,0" Margin="20,0"
+                         Tag="Buscar..." Style="{StaticResource BarraBusqueda}"/>
+
+                <Button Content="{Binding Username}" Style="{StaticResource BotonSoloTexto}" 
+                        Margin="10,0" Click="BotonUsuario" MinWidth="80">
                     <Button.ContextMenu>
                         <ContextMenu x:Name="UserMenu">
                             <MenuItem Header="Perfil" Click="IrAPerfil"/>
                             <MenuItem Header="Reviews" Click="IrAReviews"/>
-                            <MenuItem Header="Ajustes" Click="IrAAjustes"/>
                             <MenuItem Header="Cerrar Sesion" Click="CerrarSesion"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>
 
-                <Button Content="PELÍCULAS" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0"/>
-                <Button Content="AJUSTES" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0"/>
+                <Button Content="PELÍCULAS" Style="{StaticResource BotonSoloTexto}" Margin="10,0"/>
             </StackPanel>
         </Grid>
 
-        <Frame x:Name="InteriorFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40,20">
+
+                <TextBlock Text="PELÍCULAS RECOMENDADAS" 
+                           Foreground="#99aabb" FontSize="14" FontWeight="Bold" 
+                           Margin="10,0,0,10"/>
+
+                <Separator Background="#445566" Margin="10,0,10,25" Opacity="0.4"/>
+
+                <ItemsControl x:Name="ListaPeliculasAleatorias">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Margin="8,0" Cursor="Hand" Click="Pelicula_Click" Tag="{Binding PeliculaID}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="BordePoster" CornerRadius="4" 
+                                                BorderThickness="2" BorderBrush="#334455" 
+                                                ClipToBounds="True">
+                                            <Border.Effect>
+                                                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
+                                            </Border.Effect>
+                                            <Grid Background="#1a1a1a"> <Image Source="{Binding PortadaURL}" 
+                                                       Width="145" Height="215" 
+                                                       Stretch="UniformToFill"
+                                                       RenderOptions.BitmapScalingMode="HighQuality">
+                                                    <Image.ToolTip>
+                                                        <ToolTip Content="{Binding Titulo}"/>
+                                                    </Image.ToolTip>
+                                                </Image>
+                                                <Border x:Name="HoverOverlay" Background="White" Opacity="0"/>
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="BordePoster" Property="BorderBrush" Value="#00e054"/>
+                                                <Setter TargetName="HoverOverlay" Property="Opacity" Value="0.1"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Frame x:Name="InteriorFrame" NavigationUIVisibility="Hidden" Margin="0,30,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
