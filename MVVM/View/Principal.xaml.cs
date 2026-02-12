@@ -67,7 +67,13 @@ namespace Conectar.MVVM.View
 
         private void IrAReviews(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new ReviewsPage());
+            var vm = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
+
+            if (vm.UsuarioLogeado != null)
+            {
+                // Pasamos el ID del usuario a la nueva página
+                this.NavigationService.Navigate(new ReviewsPage(vm.UsuarioLogeado.Id));
+            }
         }
         private void CerrarSesion(object sender, RoutedEventArgs e)
         {

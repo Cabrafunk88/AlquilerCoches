@@ -20,9 +20,11 @@ namespace Conectar.MVVM.View
     /// </summary>
     public partial class ReviewsPage : Page
     {
-        public ReviewsPage()
+        public ReviewsPage(int idUsuario)
         {
             InitializeComponent();
+
+            this.DataContext = new Conectar.MVVM.ViewModel.ReviewsViewModel(idUsuario);
         }
     }
 }
