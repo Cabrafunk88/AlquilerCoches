@@ -25,7 +25,7 @@ namespace Conectar.MVVM.View
             InitializeComponent();
         }
 
-        private void Boton_Bypass(object sender, RoutedEventArgs e)
+        /*private void Boton_Bypass(object sender, RoutedEventArgs e)
         {
             var usuarioBypass = new Conectar.MVVM.Model.UsuarioModel
             {
@@ -40,6 +40,14 @@ namespace Conectar.MVVM.View
             Principal principal = new Principal(usuarioBypass);
 
             this.NavigationService.Navigate(principal);
+        }
+        */
+
+        private void Boton_Bypass(object sender, RoutedEventArgs e)
+        {
+            PeliculaDetallePage PeliculaDetallePage = new PeliculaDetallePage();
+
+            this.NavigationService.Navigate(PeliculaDetallePage);
         }
 
         private void Boton_Registro(object sender, RoutedEventArgs e)

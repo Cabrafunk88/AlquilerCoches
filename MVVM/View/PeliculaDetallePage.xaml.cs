@@ -16,20 +16,13 @@ using System.Windows.Shapes;
 namespace Conectar.MVVM.View
 {
     /// <summary>
-    /// Lógica de interacción para ReviewsPage.xaml
+    /// Lógica de interacción para PeliculaDetallePage.xaml
     /// </summary>
-    public partial class ReviewsPage : Page
+    public partial class PeliculaDetallePage : Page
     {
-        public ReviewsPage(int idUsuario)
+        public PeliculaDetallePage()
         {
             InitializeComponent();
-
-            this.DataContext = new Conectar.MVVM.ViewModel.ReviewsViewModel(idUsuario);
-        }
-
-        private void BotonVolver(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.GoBack();
         }
     }
 }
