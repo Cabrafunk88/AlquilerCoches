@@ -20,6 +20,15 @@
     </Page.Background>
 
     <Grid>
+        <Button VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Style="{StaticResource BotonModerno}" Content="VOLVER"
+                Margin="5"
+                FontSize="12"
+                Width="70"
+                Height="20" Click="BotonVolver"
+            />
+
         <Border Background="Black" 
                 CornerRadius="20"
                 MaxWidth="1200" 

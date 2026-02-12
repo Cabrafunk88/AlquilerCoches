@@ -47,7 +47,7 @@
                          Tag="Buscar..."
                          Style="{StaticResource BarraBusqueda}"
                     />
-                <Button Content="{Binding Username}" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0" Click="BotonUsuario">
+                <Button Content="{Binding Username}" Style="{StaticResource BotonSoloTexto}" Margin="10,0,10,0" Click="BotonUsuario" MinWidth="80">
                     <Button.ContextMenu>
                         <ContextMenu x:Name="UserMenu">
                             <MenuItem Header="Perfil" Click="IrAPerfil"/>

@@ -26,5 +26,10 @@ namespace Conectar.MVVM.View
             //Pasamos el viewmodel desde aqui porque piede algo por parametro
             this.DataContext = new ViewModel.PerfilViewModel(usuarioLogueado);
         }
+
+        private void BotonVolver(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }
