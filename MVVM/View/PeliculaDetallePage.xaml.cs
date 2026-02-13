@@ -28,5 +28,10 @@ namespace Conectar.MVVM.View
 
             this.DataContext = new PeliculaDetalleViewModel(peliculaSeleccionada, usuarioLogueado);
         }
+
+        private void BotonVolver(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }

@@ -4,9 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Conectar.MVVM.View"
+      xmlns:helpers="clr-namespace:Conectar.Helpers"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PeliculaDetallePage">
+
+    <Page.Resources>
+        <helpers:IntToBooleanConverter x:Key="IntToBool"/>
+    </Page.Resources>
 
     <Page.Background>
         <ImageBrush 
@@ -15,74 +20,89 @@
                 TileMode="None" />
     </Page.Background>
 
-    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
-        <Border Padding="40">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+            <Border Padding="40">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="300"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Border Grid.Column = "0" Background="#1a1a1a" CornerRadius="15" Height="450">
-                        <Image Source="{Binding ImagenFuente}" Stretch="UniformToFill"/>
-                    </Border>
+                        <Border Grid.Column = "0" Background="#1a1a1a" CornerRadius="15" Height="450">
+                            <Image Source="{Binding ImagenFuente}" Stretch="UniformToFill"/>
+                        </Border>
 
-                    <StackPanel Grid.Column="1" Margin="30,0,0,0">
-                        <TextBlock Text="{Binding Titulo}" FontSize="36" FontWeight="Bold" Foreground="White" TextWrapping="Wrap"/>
-                        <TextBlock Text="SINOPSIS" FontSize="14" Foreground="#9ab" Margin="0,20,0,5"/>
-                        <TextBlock Text="{Binding Sinopsis}" Foreground="White" FontSize="16" TextWrapping="Wrap"/>
+                        <StackPanel Grid.Column="1" Margin="30,0,0,0">
+                            <TextBlock Text="{Binding Titulo}" FontSize="36" FontWeight="Bold" Foreground="White" TextWrapping="Wrap"/>
+                            <TextBlock Text="SINOPSIS" FontSize="14" Foreground="#9ab" Margin="0,20,0,5"/>
+                            <TextBlock Text="{Binding Sinopsis}" Foreground="White" FontSize="16" TextWrapping="Wrap"/>
 
-                        <TextBlock Text="PUNTUACIÓN MEDIA" FontSize="14" Foreground="#9ab" Margin="0,10,0,5"/>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="★" Foreground="Gold" FontSize="24" Margin="0,0,5,0"/>
-                            <TextBlock Text="★" Foreground="Gold" FontSize="24" Margin="0,0,5,0"/>
-                            <TextBlock Text="★" Foreground="Gold" FontSize="24" Margin="0,0,5,0"/>
-                            <TextBlock Text="★" Foreground="Gold" FontSize="24" Margin="0,0,5,0"/>
-                            <TextBlock Text="★" Foreground="Gray" FontSize="24" Margin="0,0,5,0"/>
+                            <TextBlock Text="PUNTUACIÓN" FontSize="14" Foreground="#9ab" Margin="0,10,0,5"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,20">
+                                <RadioButton Style="{StaticResource Estrella}" GroupName="g1"
+                            IsChecked="{Binding PuntuacionSeleccionada, Converter={StaticResource IntToBool}, ConverterParameter=1, Mode =TwoWay}"/>
+                                <RadioButton Style="{StaticResource Estrella}" GroupName="g2"
+                                         IsChecked="{Binding PuntuacionSeleccionada, Converter={StaticResource IntToBool}, ConverterParameter=2, Mode =TwoWay}"/>
+                                <RadioButton Style="{StaticResource Estrella}" GroupName="g3"
+                            IsChecked="{Binding PuntuacionSeleccionada, Converter={StaticResource IntToBool}, ConverterParameter=3, Mode =TwoWay}"/>
+                                <RadioButton Style="{StaticResource Estrella}" GroupName="g4"
+                                         IsChecked="{Binding PuntuacionSeleccionada, Converter={StaticResource IntToBool}, ConverterParameter=4, Mode =TwoWay}"/>
+                                <RadioButton Style="{StaticResource Estrella}" GroupName="g5"
+                                         IsChecked="{Binding PuntuacionSeleccionada, Converter={StaticResource IntToBool}, ConverterParameter=5, Mode =TwoWay}"/>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                </Grid>
+                    </Grid>
 
-                <StackPanel Grid.Row="1" Margin="0,40,0,20">
-                    <TextBlock Text="DEJA TU RESEÑA" Foreground="White" FontWeight="Bold" Margin="0,0,0,10"/>
-                    <TextBox Height="100" AcceptsReturn="True" TextWrapping="Wrap" 
+                    <StackPanel Grid.Row="1" Margin="0,40,0,20">
+                        <TextBlock Text="DEJA TU RESEÑA" Foreground="White" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <TextBox Height="100" AcceptsReturn="True" TextWrapping="Wrap" 
                              Text="{Binding NuevaResena, UpdateSourceTrigger=PropertyChanged}"
                  Style="{StaticResource BarraBusqueda}" Tag="Escribe aquí tu opinión..."/>
-                    <Button Content="ENVIAR RESEÑA" HorizontalAlignment="Right" Margin="0,10,0,0"
+                        <Button Content="ENVIAR RESEÑA" HorizontalAlignment="Right" Margin="0,10,0,0"
                             Command="{Binding EnviarResenaCommand}"
                 Style="{StaticResource BotonModerno}" Width="150"/>
-                </StackPanel>
+                    </StackPanel>
 
-                <StackPanel Grid.Row="2">
-                    <Separator Background="#333" Margin="0,20"/>
-                    <TextBlock Text="REVIEWS EN GENERAL" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,20"/>
+                    <StackPanel Grid.Row="2">
+                        <Separator Background="#333" Margin="0,20"/>
+                        <TextBlock Text="REVIEWS EN GENERAL" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,20"/>
 
-                    <ItemsControl ItemsSource="{Binding ReviewsGenerales}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Background="#222" Margin="0,5" Padding="10" CornerRadius="8">
-                                    <StackPanel>
-                                        <Grid>
-                                            <TextBlock Text="{Binding NombreUsuario}" Foreground="White" FontWeight="Bold"/>
-                                            <TextBlock Text="{Binding Puntuacion, StringFormat='⭐ {0}/5'}" HorizontalAlignment="Right" Foreground="White"/>
-                                        </Grid>
-                                        <TextBlock Text="{Binding Contenido}" Foreground="White" TextWrapping="Wrap" Margin="0,5"/>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </StackPanel>
+                        <ItemsControl ItemsSource="{Binding ReviewsGenerales}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#222" Margin="0,5" Padding="10" CornerRadius="8">
+                                        <StackPanel>
+                                            <Grid>
+                                                <TextBlock Text="{Binding NombreUsuario}" Foreground="White" FontWeight="Bold"/>
+                                                <TextBlock Text="{Binding Puntuacion, StringFormat='⭐ {0}/5'}" HorizontalAlignment="Right" Foreground="White"/>
+                                            </Grid>
+                                            <TextBlock Text="{Binding Contenido}" Foreground="White" TextWrapping="Wrap" Margin="0,5"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
 
-            </Grid>
-        </Border>
+                </Grid>
+            </Border>
+        </ScrollViewer>
 
-    </ScrollViewer>
+        <Button VerticalAlignment="Top" 
+            HorizontalAlignment="Left" 
+            Style="{StaticResource BotonModerno}" 
+            Content="VOLVER" 
+            Width="80" 
+            Height="30" 
+            Cursor="Hand"
+            Click="BotonVolver"/>
+    </Grid>
 </Page>

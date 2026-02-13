@@ -19,6 +19,7 @@ namespace Conectar.MVVM.ViewModel
         private string _portadaURL;
         private DataTable _reviewsGenerales;
         private string _nuevaResena;
+        private int _puntuacionSeleccionada;
 
         public int PeliculaID 
         {
@@ -56,6 +57,15 @@ namespace Conectar.MVVM.ViewModel
             get { return _nuevaResena; }
             set { _nuevaResena = value; OnPropertyChanged(); } 
         }
+        public int PuntuacionSeleccionada
+        {
+            get { return _puntuacionSeleccionada; }
+            set
+            {
+                _puntuacionSeleccionada = value;
+                OnPropertyChanged();
+            }
+        }
         public string ImagenFuente => $"pack://application:,,,/Assets/{PortadaURL.TrimStart('/')}";
         public int IdUsuarioLogueado { get; set; }
 
@@ -89,9 +99,16 @@ namespace Conectar.MVVM.ViewModel
 
         private async Task EjecutarEnvioResena()
         {
-            if (string.IsNullOrWhiteSpace(NuevaResena))
+            if (IdUsuarioLogueado <= 0)
             {
-                MessageBox.Show("Por favor, escribe un comentario antes de enviar.");
+                MessageBox.Show("Modo Bypass: Debes iniciar sesión con una cuenta real para poder publicar reseñas.");
+                return;
+            }
+
+            //Validamos que el usuario haya escrito algo antes de enviar y que haya seleccionado una estrella o mas
+            if (PuntuacionSeleccionada == 0 || string.IsNullOrWhiteSpace(NuevaResena))
+            {
+                MessageBox.Show("Por favor, selecciona una puntuacion y escribe un comentario antes de enviar.");
                 return;
             }
 
@@ -100,7 +117,7 @@ namespace Conectar.MVVM.ViewModel
                 AccesoDatos acceso = new AccesoDatos();
 
                 List<string> nombres = new List<string> { "p_usuario", "p_pelicula", "p_puntuacion", "p_contenido" };
-                List<object> valores = new List<object> { IdUsuarioLogueado, PeliculaID, 5, NuevaResena }; // Puntuación 5 fija por ahora
+                List<object> valores = new List<object> { IdUsuarioLogueado, PeliculaID, PuntuacionSeleccionada, NuevaResena };
 
                 int resultado = await acceso.EjecutarProcedimientoNonQueryAsync("sp_InsertarResena", nombres, valores);
 

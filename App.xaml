@@ -228,5 +228,20 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="Estrella" TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <TextBlock x:Name="Txt" Text="★" FontSize="32" Foreground="#444" Margin="2" Cursor="Hand"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Txt" Property="Foreground" Value="Gold"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

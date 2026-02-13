@@ -25,7 +25,7 @@ namespace Conectar.MVVM.View
             InitializeComponent();
         }
 
-        /*
+        
         private void Boton_Bypass(object sender, RoutedEventArgs e)
         {
             var usuarioBypass = new Conectar.MVVM.Model.UsuarioModel
@@ -38,12 +38,14 @@ namespace Conectar.MVVM.View
                 FechaRegistro = DateTime.Now
             };
 
+
+
             Principal principal = new Principal(usuarioBypass);
 
             this.NavigationService.Navigate(principal);
         }
-        */
-       
+        
+       /*
         private void Boton_Bypass(object sender, RoutedEventArgs e)
         {
             var usuarioPrueba = new Conectar.MVVM.Model.UsuarioModel
@@ -66,7 +68,7 @@ namespace Conectar.MVVM.View
 
             this.NavigationService.Navigate(PeliculaDetallePage);
         }
-        
+        */
 
         private void Boton_Registro(object sender, RoutedEventArgs e)
         {
@@ -82,10 +84,5 @@ namespace Conectar.MVVM.View
             this.NavigationService.Navigate(ajustesPage);
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
