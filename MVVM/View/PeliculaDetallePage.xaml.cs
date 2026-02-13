@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Conectar.MVVM.Model;
+using Conectar.MVVM.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace Conectar.MVVM.View
     /// </summary>
     public partial class PeliculaDetallePage : Page
     {
-        public PeliculaDetallePage()
+        public PeliculaDetallePage(Pelicula peliculaSeleccionada, UsuarioModel usuarioLogueado)
         {
             InitializeComponent();
+
+            this.DataContext = new PeliculaDetalleViewModel(peliculaSeleccionada, usuarioLogueado);
         }
     }
 }

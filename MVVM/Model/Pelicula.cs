@@ -10,6 +10,7 @@ namespace Conectar.MVVM.Model
     {
         public int PeliculaID { get; set; }
         public string Titulo { get; set; }
+        public string Sinopsis { get; set; }
         public string PortadaURL { get; set; } // Lo que viene de la BD: "/Portadas/Peli.jpg"
 
         // Esta propiedad es la que usaremos en el Binding del XAML

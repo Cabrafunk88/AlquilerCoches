@@ -25,7 +25,8 @@ namespace Conectar.MVVM.View
             InitializeComponent();
         }
 
-        /*private void Boton_Bypass(object sender, RoutedEventArgs e)
+        /*
+        private void Boton_Bypass(object sender, RoutedEventArgs e)
         {
             var usuarioBypass = new Conectar.MVVM.Model.UsuarioModel
             {
@@ -42,13 +43,30 @@ namespace Conectar.MVVM.View
             this.NavigationService.Navigate(principal);
         }
         */
-
+       
         private void Boton_Bypass(object sender, RoutedEventArgs e)
         {
-            PeliculaDetallePage PeliculaDetallePage = new PeliculaDetallePage();
+            var usuarioPrueba = new Conectar.MVVM.Model.UsuarioModel
+            {
+                Id = 5, // Usamos el ID 5 (MarioElReyDelMambo) para que funcionen las inserciones en BD
+                Username = "BypassUser",
+                Email = "admin@bypass.com"
+            };
+
+            var peliculaPrueba = new Conectar.MVVM.Model.Pelicula
+            {
+                PeliculaID = 41,
+                Titulo = "Mario: El Rey del Mambo",
+                Sinopsis = "Una épica aventura sobre el ascenso al trono de un mambero.",
+                PortadaURL = "pack://application:,,,/Assets/Portadas/Alien.jpg"
+            };
+
+
+            PeliculaDetallePage PeliculaDetallePage = new PeliculaDetallePage(peliculaPrueba, usuarioPrueba);
 
             this.NavigationService.Navigate(PeliculaDetallePage);
         }
+        
 
         private void Boton_Registro(object sender, RoutedEventArgs e)
         {

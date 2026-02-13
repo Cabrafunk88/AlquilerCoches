@@ -39,6 +39,7 @@
                         <ContextMenu x:Name="UserMenu">
                             <MenuItem Header="Perfil" Click="IrAPerfil"/>
                             <MenuItem Header="Reviews" Click="IrAReviews"/>
+                            <MenuItem Header="Ajustes" Click="IrAAjustes"/>
                             <MenuItem Header="Cerrar Sesion" Click="CerrarSesion"/>
                         </ContextMenu>
                     </Button.ContextMenu>
