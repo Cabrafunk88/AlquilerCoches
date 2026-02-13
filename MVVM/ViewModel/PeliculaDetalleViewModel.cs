@@ -56,6 +56,7 @@ namespace Conectar.MVVM.ViewModel
             get { return _nuevaResena; }
             set { _nuevaResena = value; OnPropertyChanged(); } 
         }
+        public string ImagenFuente => $"pack://application:,,,/Assets/{PortadaURL.TrimStart('/')}";
         public int IdUsuarioLogueado { get; set; }
 
         public ICommand EnviarResenaCommand { get; }

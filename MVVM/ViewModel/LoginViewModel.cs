@@ -2,6 +2,7 @@
 using Conectar.MVVM.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -98,10 +99,43 @@ namespace Conectar.MVVM.ViewModel
 
         public ICommand LogInCommand { get; }
 
+        public ObservableCollection<Pelicula> Peliculas { get; set; } = new ObservableCollection<Pelicula>();
+
+
         public LoginViewModel()
         {
             LogInCommand = new RelayCommand(EjecutarLogIn, PuedoEjecutarElLogIn);
             UsuarioLogeado = new UsuarioModel();
+        }
+
+        public async Task CargarPeliculasAleatorias()
+        {
+            try
+            {
+                AccesoDatos db = new AccesoDatos();
+                DataTable dt = await db.EjecutarProcedimientoAsync("ObtenerPeliculasAleatorias");
+
+                // Limpiamos y llenamos la colección en el hilo de la UI
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Peliculas.Clear();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string rutaBD = row["PortadaURL"].ToString();
+                        Peliculas.Add(new Pelicula
+                        {
+                            PeliculaID = Convert.ToInt32(row["PeliculaID"]),
+                            Titulo = row["Titulo"].ToString(),
+                            //Sinopsis = row["Sinopsis"].ToString(),
+                            PortadaURL = rutaBD
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las películas: " + ex.Message);
+            }
         }
 
         private void EjecutarLogIn(object parameter)

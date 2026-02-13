@@ -65,7 +65,7 @@
 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Margin="10,15" Cursor="Hand" Click="Pelicula_Click" Tag="{Binding PeliculaID}">
+                            <Button Margin="10,15" Cursor="Hand" Click="Pelicula_Click" Tag="{Binding}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border x:Name="BordePoster" CornerRadius="4" 
@@ -75,7 +75,7 @@
                                                 <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
                                             </Border.Effect>
                                             <Grid Background="#1a1a1a">
-                                                <Image Source="{Binding PortadaURL}" 
+                                                <Image Source="{Binding ImagenFuente}" 
                                                        Width="145" Height="215" 
                                                        Stretch="UniformToFill"
                                                        RenderOptions.BitmapScalingMode="HighQuality">

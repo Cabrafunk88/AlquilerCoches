@@ -31,7 +31,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.Column = "0" Background="#1a1a1a" CornerRadius="15" Height="450">
-                        <Image Source="{Binding PortadaURL}" Stretch="UniformToFill"/>
+                        <Image Source="{Binding ImagenFuente}" Stretch="UniformToFill"/>
                     </Border>
 
                     <StackPanel Grid.Column="1" Margin="30,0,0,0">

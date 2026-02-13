@@ -26,10 +26,12 @@ namespace Conectar.MVVM.View
             viewModel.UsuarioLogeado = usuario;
             viewModel.Username = usuario.Username;
 
-            var peliVM = new PeliculasViewModel();
-            this.DataContext = peliVM;
+            var peliVM = new LoginViewModel();
+            this.DataContext = viewModel;
 
-            
+            _ = viewModel.CargarPeliculasAleatorias(); // Carga las películas al iniciar la página
+
+
         }
 
         
@@ -38,9 +40,21 @@ namespace Conectar.MVVM.View
             var boton = sender as Button;
             if (boton?.Tag != null)
             {
-                int peliculaId = (int)boton.Tag;
-                // Aquí podrías navegar a una página de detalle:
-                // this.NavigationService.Navigate(new DetallePeliculaPage(peliculaId));
+                //Recupera pelicula asociada al botón
+                Pelicula peliculaSeleccionada = (Pelicula)boton.Tag;
+
+                // 2. Recuperamos el usuario logueado
+                var vm = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
+
+                if (vm?.UsuarioLogeado != null)
+                {
+                    // 3. Navegamos pasando la Película seleccionada y el Usuario a la página de detalle
+                    this.NavigationService.Navigate(new PeliculaDetallePage(peliculaSeleccionada, vm.UsuarioLogeado));
+                }
+                else
+                {
+                    MessageBox.Show("Error: No se ha detectado ningún usuario logueado.");
+                }
             }
         }
 
