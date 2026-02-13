@@ -4,14 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Conectar.MVVM.View"
-      xmlns:logInVM="clr-namespace:Conectar.MVVM.ViewModel"
+      xmlns:vm="clr-namespace:Conectar.MVVM.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="900"
       Title="Principal">
 
-    <Page.DataContext>
-        <logInVM:LoginViewModel/>
-    </Page.DataContext>
+    
 
     <Page.Background>
         <ImageBrush ImageSource="pack://application:,,,/Imagenes/Background.png"
@@ -29,7 +27,7 @@
                 <Image Source="pack://application:,,,/Imagenes/LogoProyecto.png"
                        Width="120" Height="40" Margin="10,0"/>
 
-                <TextBox x:Name="BarraBusqueda" Width="200" Height="25"
+                <TextBox x:Name="BarraBusqueda" Width="200" Height="24"
                          VerticalContentAlignment="Center" Padding="10,0" Margin="20,0"
                          Tag="Buscar..." Style="{StaticResource BarraBusqueda}"/>
 
@@ -58,16 +56,16 @@
 
                 <Separator Background="#445566" Margin="10,0,10,25" Opacity="0.4"/>
 
-                <ItemsControl x:Name="ListaPeliculasAleatorias">
+                <ItemsControl x:Name="ListaPeliculasAleatorias" ItemsSource="{Binding Peliculas}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Margin="8,0" Cursor="Hand" Click="Pelicula_Click" Tag="{Binding PeliculaID}">
+                            <Button Margin="10,15" Cursor="Hand" Click="Pelicula_Click" Tag="{Binding PeliculaID}">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border x:Name="BordePoster" CornerRadius="4" 
@@ -76,7 +74,8 @@
                                             <Border.Effect>
                                                 <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
                                             </Border.Effect>
-                                            <Grid Background="#1a1a1a"> <Image Source="{Binding PortadaURL}" 
+                                            <Grid Background="#1a1a1a">
+                                                <Image Source="{Binding PortadaURL}" 
                                                        Width="145" Height="215" 
                                                        Stretch="UniformToFill"
                                                        RenderOptions.BitmapScalingMode="HighQuality">
