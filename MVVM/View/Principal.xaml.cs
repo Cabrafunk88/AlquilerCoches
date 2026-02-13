@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Conectar.MVVM.Data;   // Tu clase AccesoDatos
+using Conectar.MVVM.Model;  // Tu clase Pelicula
+using Conectar.MVVM.ViewModel;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data; // Necesario para DataTable y DataRow
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Conectar.MVVM.Data;   // Tu clase AccesoDatos
-using Conectar.MVVM.Model;  // Tu clase Pelicula
-using MySql.Data.MySqlClient;
 
 namespace Conectar.MVVM.View
 {
@@ -19,47 +20,19 @@ namespace Conectar.MVVM.View
         {
             InitializeComponent();
 
+
             // Configuración del ViewModel
-            var viewModel = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
+            var viewModel = new LoginViewModel();
             viewModel.UsuarioLogeado = usuario;
             viewModel.Username = usuario.Username;
 
-            // CARGAR PELÍCULAS AL INICIAR
-            CargarPeliculasAleatorias();
+            var peliVM = new PeliculasViewModel();
+            this.DataContext = peliVM;
+
+            
         }
 
-        private async void CargarPeliculasAleatorias()
-        {
-            try
-            {
-                AccesoDatos db = new AccesoDatos();
-
-                // Llamamos al procedimiento almacenado que debe existir en MySQL
-                DataTable dt = await db.EjecutarProcedimientoAsync("ObtenerPeliculasAleatorias");
-
-                List<Pelicula> listaPelis = new List<Pelicula>();
-                foreach (DataRow row in dt.Rows)
-                {
-                    string rutaBD = row["PortadaURL"].ToString(); // Trae "/Portadas/nombre.jpg"
-                    listaPelis.Add(new Pelicula
-                    {
-                        Titulo = row["Titulo"].ToString(),
-                        PeliculaID = Convert.ToInt32(row["PeliculaID"]),
-                        PortadaURL = $"/Assets{rutaBD}" // Esto genera "/Assets/Portadas/nombre.jpg"
-                    });
-                }
-
-                // Asignamos los datos al ItemsControl del XAML
-                ListaPeliculasAleatorias.ItemsSource = listaPelis;
-            }
-            catch (Exception ex)
-            {
-                // Si da error en da.Fill, asegúrate de haber creado el PROCEDURE en MySQL
-                MessageBox.Show("Error al cargar las películas: " + ex.Message);
-            }
-        }
-
-        // Evento para cuando hagas clic en una película
+        
         private void Pelicula_Click(object sender, RoutedEventArgs e)
         {
             var boton = sender as Button;
