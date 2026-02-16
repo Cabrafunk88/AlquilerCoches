@@ -43,7 +43,7 @@
                     </Button.ContextMenu>
                 </Button>
 
-                <Button Content="PELÍCULAS" Style="{StaticResource BotonSoloTexto}" Margin="10,0"/>
+                <Button Content="PELÍCULAS" Style="{StaticResource BotonSoloTexto}" Margin="10,0" Click="IrACatalogo"/>
             </StackPanel>
         </Grid>
 

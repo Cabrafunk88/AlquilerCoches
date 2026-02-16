@@ -86,6 +86,7 @@ namespace Conectar.MVVM.View
             }
         }
 
+
         private void IrAReviews(object sender, RoutedEventArgs e)
         {
             var vm = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
@@ -94,6 +95,12 @@ namespace Conectar.MVVM.View
                 this.NavigationService.Navigate(new ReviewsPage(vm.UsuarioLogeado.Id));
             }
         }
+
+        private void IrACatalogo(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new CatalogoPeliculas());
+        }
+       
 
         private void CerrarSesion(object sender, RoutedEventArgs e)
         {
