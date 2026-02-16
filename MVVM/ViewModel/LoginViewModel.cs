@@ -126,7 +126,7 @@ namespace Conectar.MVVM.ViewModel
                         {
                             PeliculaID = Convert.ToInt32(row["PeliculaID"]),
                             Titulo = row["Titulo"].ToString(),
-                            //Sinopsis = row["Sinopsis"].ToString(),
+                            Sinopsis = row["Sinopsis"].ToString(),
                             PortadaURL = rutaBD
                         });
                     }

@@ -58,5 +58,10 @@ namespace Conectar.MVVM.View
                 SldVolumen.Value = AudioManager.GetVolume();
             }
         }
+
+        private void BotonVolver(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }

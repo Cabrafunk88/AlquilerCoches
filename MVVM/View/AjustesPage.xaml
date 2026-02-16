@@ -8,7 +8,23 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AjustesPage">
 
-    <Grid Background="#F4F4F4">
+    <Page.Background>
+        <ImageBrush 
+                ImageSource="pack://application:,,,/Imagenes/Background.png"
+                Stretch="UniformToFill" 
+                TileMode="None" />
+    </Page.Background>
+
+    <Grid>
+        <Button VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Style="{StaticResource BotonModerno}" Content="VOLVER"
+                Margin="5"
+                FontSize="12"
+                Width="70"
+                Height="20" Click="BotonVolver"
+            />
+
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
             <Label Content="AJUSTES DE SONIDO" 
@@ -16,11 +32,12 @@
                    FontWeight="Bold" 
                    HorizontalAlignment="Center" 
                    Margin="0,0,0,30"
-                   Foreground="#333333"/>
+                   Foreground="White"/>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Volumen de la música de fondo" 
                            HorizontalAlignment="Center" 
+                           Foreground="White"
                            Margin="0,0,0,10"
                            FontSize="14"/>
 
@@ -39,12 +56,14 @@
                                Text="{Binding ElementName=SldVolumen, Path=Value, StringFormat={}{0:P0}}" 
                                Width="45" 
                                Margin="10,0,0,0" 
+                               Foreground="White"
                                VerticalAlignment="Center"
                                FontWeight="SemiBold"/>
                 </StackPanel>
 
                 <Button x:Name="BtnMute" 
                         Content="Silenciar Música" 
+                        Style="{StaticResource BotonModerno}"
                         Width="160" 
                         Height="35" 
                         Margin="0,25,0,0"
