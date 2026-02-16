@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data; // Necesario para DataTable y DataRow
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 
 namespace Conectar.MVVM.View
@@ -98,6 +99,21 @@ namespace Conectar.MVVM.View
         private void CerrarSesion(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new LogInPage());
+        }
+
+        private void BarraBusqueda_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) //Si la tecla pulsada es Enter, se ejecuta la búsqueda
+            {
+                var textBox = sender as TextBox;
+                string textoABuscar = textBox.Text; //Guarda texto buscado
+                var vm = (LoginViewModel)this.DataContext; //Para acceder al usuario logueado desde el ViewModel
+
+                if (!string.IsNullOrWhiteSpace(textoABuscar) && vm?.UsuarioLogeado != null)
+                {                 
+                    this.NavigationService.Navigate(new ResultadosBusquedaPage(textoABuscar, vm.UsuarioLogeado));
+                }
+            }
         }
 
         #endregion

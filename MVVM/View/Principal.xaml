@@ -29,6 +29,7 @@
 
                 <TextBox x:Name="BarraBusqueda" Width="200" Height="24"
                          VerticalContentAlignment="Center" Padding="10,0" Margin="20,0"
+                         KeyDown="BarraBusqueda_Enter"
                          Tag="Buscar..." Style="{StaticResource BarraBusqueda}"/>
 
                 <Button Content="{Binding Username}" Style="{StaticResource BotonSoloTexto}" 
