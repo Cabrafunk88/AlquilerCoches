@@ -99,7 +99,11 @@ namespace Conectar.MVVM.View
 
         private void IrACatalogo(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new CatalogoPeliculas());
+            var vm = (Conectar.MVVM.ViewModel.LoginViewModel)this.DataContext;
+            if (vm.UsuarioLogeado != null)
+            {
+                this.NavigationService.Navigate(new CatalogoPeliculas(vm.UsuarioLogeado));
+            }
         }
        
 

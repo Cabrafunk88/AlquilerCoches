@@ -34,7 +34,6 @@
     <None Remove="Assets\Portadas\LifeIsBeautiful.jpg" />
     <None Remove="Assets\Portadas\MadMaxFuryRoad.jpg" />
     <None Remove="Assets\Portadas\OnceUponATimeInHollywood.jpg" />
-    <None Remove="Assets\Portadas\Parasite .jpg" />
     <None Remove="Assets\Portadas\Psycho.jpg" />
     <None Remove="Assets\Portadas\PulpFiction.jpg" />
     <None Remove="Assets\Portadas\RearWindow.jpg" />
@@ -51,7 +50,6 @@
     <None Remove="Assets\Portadas\TheGreenMile.jpg" />
     <None Remove="Assets\Portadas\TheMatrix.jpg" />
     <None Remove="Assets\Portadas\ThePrestige.jpg" />
-    <None Remove="Assets\Portadas\TheShawshankRedemption .jpg" />
     <None Remove="Assets\Portadas\TheShining.jpg" />
     <None Remove="Assets\Portadas\TheSilenceOfTheLambs.jpg" />
     <None Remove="Assets\Portadas\TheTrumanShow.jpg" />
@@ -148,7 +146,7 @@
     <Resource Include="Assets\Portadas\OnceUponATimeInHollywood.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Portadas\Parasite .jpg">
+    <Resource Include="Assets\Portadas\Parasite.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Portadas\Psycho.jpg">
@@ -199,7 +197,7 @@
     <Resource Include="Assets\Portadas\ThePrestige.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Portadas\TheShawshankRedemption .jpg">
+    <Resource Include="Assets\Portadas\TheShawshankRedemption.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Portadas\TheShining.jpg">

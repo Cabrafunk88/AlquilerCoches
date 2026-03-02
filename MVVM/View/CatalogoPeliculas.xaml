@@ -4,45 +4,69 @@
       xmlns:vm="clr-namespace:Conectar.MVVM.ViewModel" 
       Title="Catalogo">
 
-    <Page.DataContext>
-        <vm:TodasLasPeliculasViewModel/>
-    </Page.DataContext>
 
     <Page.Background>
-        <SolidColorBrush Color="#1a1a1a"/>
+        <ImageBrush ImageSource="pack://application:,,,/Imagenes/Background.png"
+                    Stretch="UniformToFill" />
     </Page.Background>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <ItemsControl ItemsSource="{Binding ListaCompleta}" Margin="20">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="5" VerticalAlignment="Top"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+    <Grid>
+        <Button VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Style="{StaticResource BotonModerno}" Content="VOLVER"
+                Margin="5"
+                FontSize="12"
+                Width="70"
+                Height="20" Click="BotonVolver"
+            />
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding ListaCompleta}" Margin="20">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="4" VerticalAlignment="Top"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="145" Margin="10,15">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="145" Margin="10,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                        <Button Grid.Row="0" Cursor="Hand" Tag="{Binding PeliculaID}" Click="Pelicula_Click">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="4" ClipToBounds="True">
-                                        <Image Source="{Binding PortadaURL}" 
-                                               Height="215" 
-                                               Width="145"
+                            <Button Grid.Row="0" Margin="10,15" Cursor="Hand" Click="Pelicula_Click" Tag="{Binding}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="BordePoster" CornerRadius="4" 
+                                                BorderThickness="2" BorderBrush="#334455" 
+                                                ClipToBounds="True">
+                                            <Border.Effect>
+                                                <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
+                                            </Border.Effect>
+                                            <Grid>
+                                                <Image Source="{Binding ImagenFuente}" 
+                                               Width="145" Height="215"
                                                Stretch="UniformToFill"
-                                               RenderOptions.BitmapScalingMode="HighQuality"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
+                                               RenderOptions.BitmapScalingMode="HighQuality">
+                                                    <Image.ToolTip>
+                                                        <ToolTip Content="{Binding Titulo}"/>
+                                                    </Image.ToolTip>
+                                                </Image>
+                                                <Border x:Name="HoverOverlay" Background="White" Opacity="0"/>
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="BordePoster" Property="BorderBrush" Value="#00e054"/>
+                                                <Setter TargetName="HoverOverlay" Property="Opacity" Value="0.1"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
 
-                        <TextBlock Grid.Row="1" 
+                            <TextBlock Grid.Row="1" 
                                    Text="{Binding Titulo}" 
                                    Foreground="White" 
                                    FontSize="12"
@@ -51,9 +75,11 @@
                                    HorizontalAlignment="Center" 
                                    TextAlignment="Center" 
                                    TextWrapping="Wrap"/>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </ScrollViewer>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+
 </Page>

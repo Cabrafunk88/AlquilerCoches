@@ -100,7 +100,7 @@ namespace Conectar.MVVM.ViewModel
         public ICommand LogInCommand { get; }
 
         public ObservableCollection<Pelicula> Peliculas { get; set; } = new ObservableCollection<Pelicula>();
-
+        public ObservableCollection<Pelicula> ListaCompleta { get; set; } = new ObservableCollection<Pelicula>();
 
         public LoginViewModel()
         {
@@ -108,6 +108,35 @@ namespace Conectar.MVVM.ViewModel
             UsuarioLogeado = new UsuarioModel();
         }
 
+        public async Task CargarTodasAsync()
+        {
+            try
+            {
+                AccesoDatos db = new AccesoDatos();
+                // Asegúrate de tener este procedimiento que devuelva TODO
+                DataTable dt = await db.EjecutarProcedimientoAsync("ObtenerTodasLasPeliculas");
+
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    ListaCompleta.Clear();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        string rutaBD = row["PortadaURL"].ToString();
+                        ListaCompleta.Add(new Pelicula
+                        {
+                            PeliculaID = Convert.ToInt32(row["PeliculaID"]),
+                            Titulo = row["Titulo"].ToString(),
+                            Sinopsis = row["Sinopsis"].ToString(),
+                            PortadaURL = rutaBD
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar catálogo: " + ex.Message);
+            }
+        }
         public async Task CargarPeliculasAleatorias()
         {
             try
